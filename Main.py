@@ -1,5 +1,5 @@
-escolha = int(input('''
-======= ======== ROBOFLEET ==========
+escolha = input('''
+=============== ROBOFLEET ==========
 1. Carregar datasets
 2. Listar robos
 3. Consultar robo
@@ -14,35 +14,34 @@ escolha = int(input('''
 12. Apagar tarefa
 0. Sair
 Escolha uma opcao:
-'''))
+''')
 
-match escolha:
-    case 0:
-        print("")
-        print("A sair do programa")
-        exit()
-    case 1:
-        print("Carregar datasets")
-    case 2:
-        print("Listar robos")
-    case 3:
-        print("Consultar robo")
-    case 4:
-        print("Listar localizacoes")
-    case 5:
-        print("Criar tarefa")
-    case 6:
-        print("Listar tarefas")
-    case 7:
-        print("Atribuir tarefa a um robo")
-    case 8:
-        print("Executar tarefa")
-    case 9:
-        print("Carregar bateria de um robo")
-    case 10:
-        print("Consultar estado da frota")
-    case 11:
-        print("Editar tarefa")
-    case 12:
-        print("Apagar tarefa")
-    
+if escolha == "0":
+    print("A sair do programa")
+    exit()
+if escolha == "1":
+    print("Carregar datasets")
+elif escolha == "2":
+    print("Listar robos")
+elif escolha == "3":
+    print("Consultar robo")
+elif escolha == "4":
+    print("Listar localizacoes")
+elif escolha == "5":
+    print("Criar tarefa")
+elif escolha == "6":
+    print("Listar tarefas")
+elif escolha == "7":   
+    print("Atribuir tarefa a um robo")
+elif escolha == "8":
+    print("Executar tarefa")
+elif escolha == "9":
+    print("Carregar bateria de um robo")
+elif escolha == "10":
+    print("Consultar estado da frota")
+elif escolha == "11":
+    print("Editar tarefa")
+elif escolha == "12":
+    print("Apagar tarefa")
+else:
+    print("Introduza uma ação valida!")
