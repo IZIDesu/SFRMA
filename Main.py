@@ -45,3 +45,4 @@ elif escolha == "12":
     print("Apagar tarefa")
 else:
     print("Introduza uma ação valida!")
+print("heheheha")
