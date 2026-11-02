@@ -44,4 +44,4 @@ elif escolha == "11":
 elif escolha == "12":
     print("Apagar tarefa")
 else:
-    print("Introduza uma ação valida!")
+    print("Introduza uma ação valida!")#muito giro
