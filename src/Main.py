@@ -1,5 +1,5 @@
 running=True
-acoes = [["Sair", #Menu inicial
+acoes = [["Sair", #menu inicial
          "Carregar datasets",
          "Listar robos",
          "Consultar robo",
@@ -13,20 +13,37 @@ acoes = [["Sair", #Menu inicial
          "Editar tarefa", 
          "Apagar tarefa"],
 
-        ["Sair", #Menu do dataset
-        "Carregar datasets"],
+         ["Sair", #menu do dataset
+         "Carregar datasets"],
          
-         ["Sair", #Menu da listagem dos robôs
+         ["Sair", #menu da listagem dos robôs
          "Apresentar informação reduzida",
          "Apresentar toda a informação",],
          
-         ["Sair"], #Menu da consulta dos robôs
+         ["Sair"], #menu da consulta dos robôs
 
-         [],
+         ["Sair"], #Listar localizacoes
+
+         ["Sair"], #Criar tarefa
+
+         ["Sair"], #Listar tarefas
+
+         ["Sair"], #Atribuir tarefa a um robo
+
+         ["Sair"], #Executar tarefa
+
+         ["Sair"], #Carregar bateria de um robo
+
+         ["Sair"], #Consultar estado da frota
+
+         ["Sair"], #Editar tarefa
+
+         ["Sair"], #Apagar tarefa
          ]
 
+
 ##Lista provisória
-Lista_dos_robos = {"R001":["LIMO","100"],
+lista_dos_robos = {"R001":["LIMO","100"],
                    "R002":["LIMO","100"],
                    "R003":["LIMO","100"],
                    "R004":["LIMO","100"],
@@ -44,82 +61,91 @@ Lista_dos_robos = {"R001":["LIMO","100"],
 
 
 
+def is_valid_number(string,array,return_int=False):
+    if string.isdigit():
+        if 0>int(string) or (len(array)-1)<int(string):
+            print("Introduza uma ação valida!")
+            return(False)
+        if return_int:
+            return(int(string))
+        else:
+            return(True)
+    else:
+        print("Introduza um valor valido")
+        return(False)
 
 
-def Menu(numero_do_menu=0):
-    print("=============== ROBOFLEET ===============")
-    for i in range(len(acoes[numero_do_menu])):
-        print(f"{i}. {acoes[numero_do_menu][i]}")
+def menu(numero_do_menu=0,input_on=True):
+    if numero_do_menu == 0:
+        print(f"=============== ROBOFLEET ===============")
+    else:
+        print(f"=============== {acoes[0][numero_do_menu]} ===============")
+    for acao in range(len(acoes[numero_do_menu])):
+        print(f"{acao}. {acoes[numero_do_menu][acao]}")
+    if input_on:
+        resposta = input("Escolha uma opcao:\n")
+        return(resposta)
 
 
-def Opcoes(opcao_running=True):
-    while opcao_running:
-        print("Entrado")
-        escolha = input("Escolha uma opcao:\n")
+def carregar_datasets():
+    None
+
+def listar_robos(escolha):
+    for robo in lista_dos_robos:
+        print(robo)
 
 
-def Datasets():
+def consultar_robo(escolha):
+    None
+
+def listar_localizacoes():
+    None
+
+def criar_tarefa():
+    None
+
+def listar_tarefas():
+    None
+
+def atribuir_tarefa_robo():
+    None
+
+def executar_tarefa():
+    None
+
+def carregar_bateria_robo():
+    None
+
+def consultar_estado_frota():
+    None
+
+def editar_tarefa():
+    None
+
+def apagar_tarefa():
     None
 
 
 
+
+#Lista das funções gerais
+lista_funções = [carregar_datasets, 
+                 listar_robos, 
+                 consultar_robo, 
+                 listar_localizacoes, 
+                 criar_tarefa, 
+                 listar_tarefas, 
+                 atribuir_tarefa_robo, 
+                 executar_tarefa, 
+                 carregar_bateria_robo, 
+                 consultar_estado_frota, 
+                 editar_tarefa, 
+                 apagar_tarefa]
+
+
 while running:
-    Menu()
-    acao = input("Escolha uma opcao:\n")
-    if acao.isdigit():
-        acao = int(acao)
-
-        if 0>acao or 12<acao:
-            print("Introduza uma acao valida!")
-
-        Menu(acao)
-        Opcoes()
-
-    else:
-        print("Introduza um valor valido")
-
-
-
-
-
-        #if acao == "0":
-        #    print("A sair do programa")
-        #    running = False
-#
-        #elif acao == "1":
-        #    print("Datasets Carregados!")
-#
-        #elif acao == "2":
-        #    print("Listar robos")
-#
-        #elif acao == "3":
-        #    print("Consultar robo")
-#
-        #elif acao == "4":
-        #    print("Listar localizacoes")
-#
-        #elif acao == "5":
-        #    print("Criar tarefa")
-#
-        #elif acao == "6":
-        #    print("Listar tarefas")
-#
-        #elif acao == "7":   
-        #    print("Atribuir tarefa a um robo")
-#
-        #elif acao == "8":
-        #    print("Executar tarefa")
-#
-        #elif acao == "9":
-        #    print("Carregar bateria de um robo")
-#
-        #elif acao == "10":
-        #    print("Consultar estado da frota")
-#
-        #elif acao == "11":
-        #    print("Editar tarefa")
-#
-        #elif acao == "12":
-        #    print("Apagar tarefa")
-
+    acao = menu()
+    if is_valid_number(acao, acoes[0]):
+        menu(int(acao))
+    
         
