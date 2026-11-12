@@ -137,35 +137,50 @@ localizacao_dos_robos = ["Lisboa",
 tabela_tarefas = []
 
 
+#A função "is_valid_number" que serve para: 
+    #validar se a string que é atribuida ao argumento "string" é um numero, com o alcançe 
+    # maximo do da lista/array atribuido ao argumento "array" e 
+    
+    #retorna um boleano ou se quiser que retorne o numero em vez da string coloco o 
+    # argumento "return_int" verdadeiro
 
 def is_valid_number(string,array,return_int=False):
-    if string.isdigit():
-        if 0>int(string) or (len(array)-1)<int(string):
-            print("Introduza uma ação valida!")
-            return(False)
-        if return_int:
-            return(int(string))
-        else:
-            return(True)
-    else:
-        print("Introduza um valor valido")
-        return(False)
+    if string.isdigit(): #Verificação se string é um inteiro
+        if 0>int(string) or (len(array)-1)<int(string): #verifica se es
+            print("Introduza uma ação valida!") #imprime uma mensagem informativa ao utilizador
+            return(False) #retorna "False"
+        if return_int: #verifica se o argumento "return_int" é True
+            return(int(string)) #retorna a string "string" num numero inteiro
+        else: #se nenhuma das condições enteriores for verdadeira
+            return(True) #retorna "True"
+    else: #se a verificação isdigit() for falsa
+        print("Introduza um valor valido") #imprime uma mensagem informativa ao utilizador
+        return(False) #retorna "False"
 
+#A função "menu" que serve para:
+# ilustrar fácilmente o menu com cabeçalho e as opções
+# deixa o utilizador introduzir a opção e retorna a mesma
 
 def menu(numero_do_menu=0,input_on=True,no_menu=False):
-    if not no_menu:
-        if numero_do_menu == 0:
-            print(f"=============== ROBOFLEET ===============")
-        else:
-            print(f"=============== {acoes[0][numero_do_menu]} ===============")
-        for acao in range(len(acoes[numero_do_menu])):
-            print(f"{acao}. {acoes[numero_do_menu][acao]}")
-    if input_on:
-        resposta = input("Escolha uma opcao:\n")
-        return(resposta)
+    if not no_menu: #Verifica se o argumento "no_menu" for "False"
+        if numero_do_menu == 0: #Verifica se o argumento "numero_do_menu" é 0
+            print(f"=============== ROBOFLEET ===============") #imprime o cabeçalho
+        else: #Verifica se o argumento "numero_do_menu" é diferente de 0
+            print(f"=============== {acoes[0][numero_do_menu]} ===============") #imprime o cabeçalho da respetiva instrução
+        for acao in range(len(acoes[numero_do_menu])): #loop para ilustrar todas as opções do menu
+            print(f"{acao}. {acoes[numero_do_menu][acao]}") #ilustra o numero da ação mais a ação em si
+    if input_on: #Verifica se o argumento "input_on" é "True"
+        resposta = input("Escolha uma opcao:\n") #imprime a mensagem ao utilizador
+        return(resposta) #retorna a mensagem que o utilizador introduziu
 
 
-###### Pertencem á Lista de funções
+
+
+
+
+############################################
+###### Pertencem á Lista de funções ########
+############################################
 
 #menu do dataset: A plataforma deve permitir carregar os dados a partir dos ficheiros CSV fornecidos no Moodle: robots.csv, locations.csv e tasks.csv
  #O ficheiro de tarefas poderá conter tarefas iniciais e deverá incluir, no mínimo: identificador, descrição, origem, destino, prioridade e estado.
