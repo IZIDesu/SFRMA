@@ -110,14 +110,14 @@ def menu(numero_do_menu=0,input_on=True,no_menu=False):
 
 ###### Pertencem á Lista de funções
 
-def carregar_datasets(): #1
+def carregar_datasets(escolha,acao): #1
     None
 
 def listar_robos(escolha,acao,repeticao=True): #2
     while repeticao:
         if escolha == 0:
             repeticao = False
-        if escolha == 1:
+        elif escolha == 1:
             for robo in lista_dos_robos:
                 print(robo)
         elif escolha == 2:
@@ -129,54 +129,58 @@ def listar_robos(escolha,acao,repeticao=True): #2
             print("Introduza uma ação valida!\n")
         
         if repeticao:
-            escolha = int(menu(acao))
+            escolha = is_valid_number(menu(acao))
     
 
 
 
 
-def consultar_robo(escolha,impressao=True): #3
-    if escolha == 1:
-        robo_consultar = menu(no_menu=True) 
-        if robo_consultar in lista_dos_robos:
-            if impressao:
-                print(f"{robo_consultar}, existe!")
-            return(True)
-        else:
-            if impressao:
-                print(f"{robo_consultar}, não existe!")
-            return(False)
+def consultar_robo(escolha,acao,impressao=True,repeticao=True): #3
+    while repeticao:
+        if escolha == 1:
+            robo_consultar = menu(no_menu=True) 
+            if robo_consultar in lista_dos_robos:
+                if impressao:
+                    print(f"{robo_consultar}, existe!")
+                return(True)
+            else:
+                if impressao:
+                    print(f"{robo_consultar}, não existe!")
+                return(False)
 
-def listar_localizacoes(escolha): #4
+        if repeticao:
+            escolha = int(menu(acao))
+
+def listar_localizacoes(escolha,acao): #4
     if escolha == 1:
         for robo in range(lista_dos_robos):
             print(f"{lista_dos_robos[robo]} está em {localizacao_dos_robos[robo]}")
-    if escolha == 2:
+    elif escolha == 2:
         robo_escolha = menu(no_menu=True)
         consultar_robo(robo_escolha)
 
-def criar_tarefa():
+def criar_tarefa(escolha,acao):
     None
 
-def listar_tarefas():
+def listar_tarefas(escolha,acao):
     None
 
-def atribuir_tarefa_robo():
+def atribuir_tarefa_robo(escolha,acao):
     None
 
-def executar_tarefa():
+def executar_tarefa(escolha,acao):
     None
 
-def carregar_bateria_robo():
+def carregar_bateria_robo(escolha,acao):
     None
 
-def consultar_estado_frota():
+def consultar_estado_frota(escolha,acao):
     None
 
-def editar_tarefa():
+def editar_tarefa(escolha,acao):
     None
 
-def apagar_tarefa():
+def apagar_tarefa(escolha,acao):
     None
 
 
@@ -203,5 +207,5 @@ while running:
         running = False
     else:
         #print(lista_funções[int(acao)])
-        lista_funções[int(acao)-1](int(menu(int(acao))),int(acao))
+        lista_funções[int(acao)-1](is_valid_number(menu(acao), acoes[0], return_int=0),acao)
         
