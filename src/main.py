@@ -198,7 +198,7 @@ lista_funções = [carregar_datasets,
 
 
 while running:
-    acao = is_valid_number(menu(input_on=True, acoes[0],return_int=True))
+    acao = is_valid_number(menu(), acoes[0],return_int=True)
     if acao == 0:
         running = False
     else:
