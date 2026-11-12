@@ -1,4 +1,5 @@
 running=True
+print("Bem-vindo ao Robofleet, o software de gestão de frotas de robôs!")
 acoes = [["Sair", #menu inicial
          "Carregar datasets",
          "Listar robos",
