@@ -53,13 +53,13 @@ acoes = [#menu inicial
          #• A prioridade deve ser validada.
          ["Sair"], 
 
-        #Listar tarefas: A plataforma deve permi$r apresentar todas as tarefas existentes
-         #• Apresentar iden$ficador, descrição, origem, des$no, prioridade, estado e robô atribuído.
-         #• Permi$r dis$nguir tarefas pendentes, atribuídas, em execução, concluídas e canceladas.
+        #Listar tarefas: A plataforma deve permitir apresentar todas as tarefas existentes
+         #• Apresentar identificador, descrição, origem, destino, prioridade, estado e robô atribuído.
+         #• Permitir distinguir tarefas pendentes, atribuídas, em execução, concluídas e canceladas.
          ["Sair"], 
         
-        #Atribuir tarefa a um robo: A plataforma deve permi$r atribuir uma tarefa pendente a um robô.
-         #• O robô deve exis$r e estar disponível.
+        #Atribuir tarefa a um robo: A plataforma deve permitir atribuir uma tarefa pendente a um robô.
+         #• O robô deve existir e estar disponível.
          #• O robô deve possuir um nível de bateria igual ou superior a 25%.
          #• A tarefa deve encontrar-se no estado pendente.
          #• Após a atribuição, a tarefa passa ao estado atribuída e o robô passa ao estado ocupado.
@@ -86,16 +86,16 @@ acoes = [#menu inicial
          #• Calcular e apresentar a bateria média da frota.
          ["Sair"], 
 
-        #Editar tarefa: A plataforma deve permi$r alterar uma tarefa existente.
-         #• Pesquisar a tarefa pelo seu iden$ficador.
-         #• Permi$r alterar descrição, origem, des$no e prioridade.
-         #• Não permi$r alterações incoerentes com o estado da tarefa, por exemplo alterar uma tarefa já concluída.
+        #Editar tarefa: A plataforma deve permitir alterar uma tarefa existente.
+         #• Pesquisar a tarefa pelo seu identificador.
+         #• Permitir alterar descrição, origem, destino e prioridade.
+         #• Não permitir alterações incoerentes com o estado da tarefa, por exemplo alterar uma tarefa já concluída.
          ["Sair"], 
 
-        #Apagar tarefa: A plataforma deve permi$r remover uma tarefa existente.
-         #• Pesquisar a tarefa pelo seu iden$ficador.
+        #Apagar tarefa: A plataforma deve permitir remover uma tarefa existente.
+         #• Pesquisar a tarefa pelo seu identificador.
          #• Apenas tarefas pendentes ou canceladas poderão ser removidas.
-         #• Após a remoção, apresentar confirmação ao u$lizador.
+         #• Após a remoção, apresentar confirmação ao utilizador.
          ["Sair"], 
          ]
 
@@ -167,9 +167,15 @@ def menu(numero_do_menu=0,input_on=True,no_menu=False):
 
 ###### Pertencem á Lista de funções
 
+#menu do dataset: A plataforma deve permitir carregar os dados a partir dos ficheiros CSV fornecidos no Moodle: robots.csv, locations.csv e tasks.csv
+ #O ficheiro de tarefas poderá conter tarefas iniciais e deverá incluir, no mínimo: identificador, descrição, origem, destino, prioridade e estado.
 def carregar_datasets(escolha,acao): #1
     None
 
+
+#menu da listagem dos robôs
+ #• Apresentar, pelo menos, identificador, modelo, bateria, localização e estado.
+ #• A listagem deverá ser ordenada pelo identificador do robô.
 def listar_robos(escolha,acao,repeticao=True): #2
     while repeticao:
         if escolha == 0:
@@ -187,11 +193,10 @@ def listar_robos(escolha,acao,repeticao=True): #2
         
         if repeticao:
             escolha = is_valid_number(menu(acao))
-    
 
-
-
-
+#menu da consulta dos robôs
+ #• Pesquisar o robô pelo identificador.
+ #• Informar o utilizador caso o robô não exista.
 def consultar_robo(escolha,acao,impressao=True,repeticao=True): #3
     while repeticao:
         if escolha == 1:
@@ -208,6 +213,9 @@ def consultar_robo(escolha,acao,impressao=True,repeticao=True): #3
         if repeticao:
             escolha = int(menu(acao))
 
+#Listar localizacoes
+ #• Apresentar código, nome e distância/valor de referência associado.
+ #• Ordenar a listagem alfabeticamente pelo nome ou pelo código.
 def listar_localizacoes(escolha,acao, repeticao=True): #4
     while repeticao:
         if escolha == 1:
@@ -220,52 +228,88 @@ def listar_localizacoes(escolha,acao, repeticao=True): #4
         if repeticao:
             escolha = int(menu(acao))
         
-
+#Criar tarefa: A plataforma deve permitir criar uma nova tarefa a realizar por um robô.
+ #• Identificador único
+ #• Descrição
+ #• Localização de origem
+ #• Localização de destino
+ #• Prioridade (baixa, média ou alta)
+ #• Estado (inicialmente pendente)
+ #• Robô atribuído (inicialmente vazio, se ainda não tiver sido feita atribuição)
+    #regras:
+ #• A origem e o destino devem corresponder a localizações existentes.
+ #• O identificador da tarefa não pode estar repetido.
+ #• A prioridade deve ser validada.
 def criar_tarefa(escolha,acao, repeticao=True):
     while repeticao:
         if repeticao:
             escolha = int(menu(acao))
 
+#Listar tarefas: A plataforma deve permitir apresentar todas as tarefas existentes
+ #• Apresentar identificador, descrição, origem, destino, prioridade, estado e robô atribuído.
+ #• Permitir distinguir tarefas pendentes, atribuídas, em execução, concluídas e canceladas.
 def listar_tarefas(escolha,acao, repeticao=True):
     while repeticao:
         if repeticao:
             escolha = int(menu(acao))
     
-
+#Atribuir tarefa a um robo: A plataforma deve permitir atribuir uma tarefa pendente a um robô.
+ #• O robô deve existir e estar disponível.
+ #• O robô deve possuir um nível de bateria igual ou superior a 25%.
+ #• A tarefa deve encontrar-se no estado pendente.
+ #• Após a atribuição, a tarefa passa ao estado atribuída e o robô passa ao estado ocupado.
 def atribuir_tarefa_robo(escolha,acao, repeticao=True):
     while repeticao:
         if repeticao:
             escolha = int(menu(acao))
 
-
+#Executar tarefa: A plataforma deve simular a execução de uma tarefa previamente atribuída a um robô.
+ #• A tarefa deve estar atribuída a um robô válido.
+ #• A execução deve calcular um consumo de bateria com base numa regra: Exemplo: 𝑐𝑜𝑛𝑠𝑢𝑚𝑜 = 𝑑𝑖𝑠𝑡â𝑛𝑐𝑖𝑎 ∗ 0.2
+ #Nota: bateria não pode ficar abaixo de 0%
+ #• No final da execução, a localização do robô deve passar a corresponder ao destino da
+ #tarefa.
+ #• A tarefa deve passar ao estado concluída e o robô deve regressar ao estado disponível.
 def executar_tarefa(escolha,acao, repeticao=True):
     while repeticao:
         if repeticao:
             escolha = int(menu(acao))
 
+#Carregar bateria de um robo: A plataforma deve permitir simular o carregamento da bateria de um robô.
+ #• O robô deve existir.
+ #• O carregamento deve atualizar o nível de bateria para 100%.
+ #• O estado do robô deve ser atualizado de forma coerente durante e após o carregamento.
 def carregar_bateria_robo(escolha,acao, repeticao=True):
     while repeticao:
         if repeticao:
             escolha = int(menu(acao))
     
-
+#Consultar estado da frota: A plataforma deve apresentar um resumo do estado da frota e das tarefas
+ #• Apresentar o número total de robôs.
+ #• Apresentar quantos robôs se encontram disponíveis, ocupados, em carregamento e indisponíveis.
+ #• Calcular e apresentar a bateria média da frota.
 def consultar_estado_frota(escolha,acao, repeticao=True):
     while repeticao:
         if repeticao:
             escolha = int(menu(acao))
     
-
+#Editar tarefa: A plataforma deve permitir alterar uma tarefa existente.
+ #• Pesquisar a tarefa pelo seu identificador.
+ #• Permitir alterar descrição, origem, destino e prioridade.
+ #• Não permitir alterações incoerentes com o estado da tarefa, por exemplo alterar uma tarefa já concluída.
 def editar_tarefa(escolha,acao, repeticao=True):
     while repeticao:
         if repeticao:
             escolha = int(menu(acao))
     
-
+#Apagar tarefa: A plataforma deve permitir remover uma tarefa existente.
+ #• Pesquisar a tarefa pelo seu identificador.
+ #• Apenas tarefas pendentes ou canceladas poderão ser removidas.
+ #• Após a remoção, apresentar confirmação ao utilizador.
 def apagar_tarefa(escolha,acao, repeticao=True):
     while repeticao:
         if repeticao:
             escolha = int(menu(acao))
-
 
 
 
@@ -289,5 +333,5 @@ while running:
     if acao == 0:
         running = False
     else:
-        lista_funções[int(acao)-1](is_valid_number(menu(acao), acoes[0], return_int=0),acao) #batata
+        lista_funções[int(acao)-1](is_valid_number(menu(acao), acoes[0], return_int=0),acao)
         
