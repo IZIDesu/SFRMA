@@ -151,37 +151,63 @@ def consultar_robo(escolha,acao,impressao=True,repeticao=True): #3
         if repeticao:
             escolha = int(menu(acao))
 
-def listar_localizacoes(escolha,acao): #4
-    if escolha == 1:
-        for robo in range(lista_dos_robos):
-            print(f"{lista_dos_robos[robo]} está em {localizacao_dos_robos[robo]}")
-    elif escolha == 2:
-        robo_escolha = menu(no_menu=True)
-        consultar_robo(robo_escolha)
+def listar_localizacoes(escolha,acao, repeticao=True): #4
+    while repeticao:
+        if escolha == 1:
+            for robo in range(lista_dos_robos):
+                print(f"{lista_dos_robos[robo]} está em {localizacao_dos_robos[robo]}")
+        elif escolha == 2:
+            robo_escolha = menu(no_menu=True)
+            consultar_robo(robo_escolha)
+        
+        if repeticao:
+            escolha = int(menu(acao))
+        
 
-def criar_tarefa(escolha,acao):
-    None
+def criar_tarefa(escolha,acao, repeticao=True):
+    while repeticao:
+        if repeticao:
+            escolha = int(menu(acao))
 
-def listar_tarefas(escolha,acao):
-    None
+def listar_tarefas(escolha,acao, repeticao=True):
+    while repeticao:
+        if repeticao:
+            escolha = int(menu(acao))
+    
 
-def atribuir_tarefa_robo(escolha,acao):
-    None
+def atribuir_tarefa_robo(escolha,acao, repeticao=True):
+    while repeticao:
+        if repeticao:
+            escolha = int(menu(acao))
 
-def executar_tarefa(escolha,acao):
-    None
 
-def carregar_bateria_robo(escolha,acao):
-    None
+def executar_tarefa(escolha,acao, repeticao=True):
+    while repeticao:
+        if repeticao:
+            escolha = int(menu(acao))
 
-def consultar_estado_frota(escolha,acao):
-    None
+def carregar_bateria_robo(escolha,acao, repeticao=True):
+    while repeticao:
+        if repeticao:
+            escolha = int(menu(acao))
+    
 
-def editar_tarefa(escolha,acao):
-    None
+def consultar_estado_frota(escolha,acao, repeticao=True):
+    while repeticao:
+        if repeticao:
+            escolha = int(menu(acao))
+    
 
-def apagar_tarefa(escolha,acao):
-    None
+def editar_tarefa(escolha,acao, repeticao=True):
+    while repeticao:
+        if repeticao:
+            escolha = int(menu(acao))
+    
+
+def apagar_tarefa(escolha,acao, repeticao=True):
+    while repeticao:
+        if repeticao:
+            escolha = int(menu(acao))
 
 
 
