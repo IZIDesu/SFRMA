@@ -1,5 +1,6 @@
 running=True
-acoes = [["Sair", #menu inicial
+acoes = [#menu inicial
+        ["Sair",
          "Carregar datasets",
          "Listar robos",
          "Consultar robo",
@@ -13,35 +14,89 @@ acoes = [["Sair", #menu inicial
          "Editar tarefa", 
          "Apagar tarefa"],
 
-         ["Sair", #menu do dataset
+        #menu do dataset: A plataforma deve permitir carregar os dados a partir dos ficheiros CSV fornecidos no Moodle: robots.csv, locations.csv e tasks.csv
+         #O ficheiro de tarefas poderá conter tarefas iniciais e deverá incluir, no mínimo: identificador, descrição, origem, destino, prioridade e estado.
+         ["Sair", 
          "Carregar datasets"],
-         
-         ["Sair", #menu da listagem dos robôs
+
+        #menu da listagem dos robôs
+         #• Apresentar, pelo menos, identificador, modelo, bateria, localização e estado.
+         #• A listagem deverá ser ordenada pelo identificador do robô.
+         ["Sair", 
          "Apresentar informação reduzida",
          "Apresentar toda a informação",],
-         
-         ["Sair",
-          "introduza o ID do robô pretende consultar [ex:R001]"], #menu da consulta dos robôs
 
+        #menu da consulta dos robôs
+         #• Pesquisar o robô pelo identificador.
+         #• Informar o utilizador caso o robô não exista.
+         ["Sair",
+          "introduza o ID do robô pretende consultar [ex:R001]"],
+
+        #Listar localizacoes
+         #• Apresentar código, nome e distância/valor de referência associado.
+         #• Ordenar a listagem alfabeticamente pelo nome ou pelo código.
          ["Sair",
           "Listar todos os robôs",
-          "Listar robô particular",], #Listar localizacoes
+          "Listar robô particular",], 
 
-         ["Sair"], #Criar tarefa
+        #Criar tarefa: A plataforma deve permitir criar uma nova tarefa a realizar por um robô.
+         #• Identificador único
+         #• Descrição
+         #• Localização de origem
+         #• Localização de destino
+         #• Prioridade (baixa, média ou alta)
+         #• Estado (inicialmente pendente)
+         #• Robô atribuído (inicialmente vazio, se ainda não tiver sido feita atribuição)
+            #regras:
+         #• A origem e o destino devem corresponder a localizações existentes.
+         #• O identificador da tarefa não pode estar repetido.
+         #• A prioridade deve ser validada.
+         ["Sair"], 
 
-         ["Sair"], #Listar tarefas
+        #Listar tarefas: A plataforma deve permi$r apresentar todas as tarefas existentes
+         #• Apresentar iden$ficador, descrição, origem, des$no, prioridade, estado e robô atribuído.
+         #• Permi$r dis$nguir tarefas pendentes, atribuídas, em execução, concluídas e canceladas.
+         ["Sair"], 
+        
+        #Atribuir tarefa a um robo: A plataforma deve permi$r atribuir uma tarefa pendente a um robô.
+         #• O robô deve exis$r e estar disponível.
+         #• O robô deve possuir um nível de bateria igual ou superior a 25%.
+         #• A tarefa deve encontrar-se no estado pendente.
+         #• Após a atribuição, a tarefa passa ao estado atribuída e o robô passa ao estado ocupado.
+         ["Sair"], 
 
-         ["Sair"], #Atribuir tarefa a um robo
+        #Executar tarefa: A plataforma deve simular a execução de uma tarefa previamente atribuída a um robô.
+         #• A tarefa deve estar atribuída a um robô válido.
+         #• A execução deve calcular um consumo de bateria com base numa regra: Exemplo: 𝑐𝑜𝑛𝑠𝑢𝑚𝑜 = 𝑑𝑖𝑠𝑡â𝑛𝑐𝑖𝑎 ∗ 0.2
+         #Nota: bateria não pode ficar abaixo de 0%
+         #• No final da execução, a localização do robô deve passar a corresponder ao destino da
+         #tarefa.
+         #• A tarefa deve passar ao estado concluída e o robô deve regressar ao estado disponível.
+         ["Sair"], 
 
-         ["Sair"], #Executar tarefa
+        #Carregar bateria de um robo: A plataforma deve permitir simular o carregamento da bateria de um robô.
+         #• O robô deve existir.
+         #• O carregamento deve atualizar o nível de bateria para 100%.
+         #• O estado do robô deve ser atualizado de forma coerente durante e após o carregamento.
+         ["Sair"], 
 
-         ["Sair"], #Carregar bateria de um robo
+        #Consultar estado da frota: A plataforma deve apresentar um resumo do estado da frota e das tarefas
+         #• Apresentar o número total de robôs.
+         #• Apresentar quantos robôs se encontram disponíveis, ocupados, em carregamento e indisponíveis.
+         #• Calcular e apresentar a bateria média da frota.
+         ["Sair"], 
 
-         ["Sair"], #Consultar estado da frota
+        #Editar tarefa: A plataforma deve permi$r alterar uma tarefa existente.
+         #• Pesquisar a tarefa pelo seu iden$ficador.
+         #• Permi$r alterar descrição, origem, des$no e prioridade.
+         #• Não permi$r alterações incoerentes com o estado da tarefa, por exemplo alterar uma tarefa já concluída.
+         ["Sair"], 
 
-         ["Sair"], #Editar tarefa
-
-         ["Sair"], #Apagar tarefa
+        #Apagar tarefa: A plataforma deve permi$r remover uma tarefa existente.
+         #• Pesquisar a tarefa pelo seu iden$ficador.
+         #• Apenas tarefas pendentes ou canceladas poderão ser removidas.
+         #• Após a remoção, apresentar confirmação ao u$lizador.
+         ["Sair"], 
          ]
 
 
@@ -78,6 +133,8 @@ localizacao_dos_robos = ["Lisboa",
                          "Lisboa",
                          "Faro",
                          "Porto",]
+
+tabela_tarefas = []
 
 
 
