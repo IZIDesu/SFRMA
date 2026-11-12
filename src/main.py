@@ -206,6 +206,5 @@ while running:
     if acao == 0:
         running = False
     else:
-        #print(lista_funções[int(acao)])
-        lista_funções[int(acao)-1](is_valid_number(menu(acao), acoes[0], return_int=0),acao)
+        lista_funções[int(acao)-1](is_valid_number(menu(acao), acoes[0], return_int=0),acao) 
         
