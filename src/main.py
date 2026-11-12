@@ -144,8 +144,10 @@ lista_funções = [carregar_datasets,
 
 
 while running:
-    acao = menu()
+    acao = menu(input_on=True)
     if is_valid_number(acao, acoes[0]):
-        menu(int(acao))
-    
+        if acao == "0":
+            running = False
+        else:
+            acao = menu(int(acao),input_on=True)
         
