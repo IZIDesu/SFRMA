@@ -138,14 +138,14 @@ tabela_tarefas = []
 
 
 #A função "is_valid_number" que serve para: 
-    #validar se a string que é atribuida ao argumento "string" é um numero, com o alcançe 
-    # maximo do da lista/array atribuido ao argumento "array" e 
+    #validar se a string que é atribuida ao Parâmetro "string" é um numero, com o alcançe 
+    # maximo do da lista/array atribuido ao Parâmetro "array" e 
     
     #retorna um boleano ou se quiser que retorne o numero em vez da string coloco o 
     # argumento "return_int" verdadeiro
 
 def is_valid_number(string,array,return_int=False):
-    if string.isdigit(): #Verificação se string é um inteiro
+    if string.isdigit(): #Verificação se o argumento "string" é um inteiro
         if 0>int(string) or (len(array)-1)<int(string): #verifica se es
             print("Introduza uma ação valida!") #imprime uma mensagem informativa ao utilizador
             return(False) #retorna "False"
@@ -191,30 +191,30 @@ def carregar_datasets(escolha,acao): #1
 #menu da listagem dos robôs
  #• Apresentar, pelo menos, identificador, modelo, bateria, localização e estado.
  #• A listagem deverá ser ordenada pelo identificador do robô.
-def listar_robos(escolha,acao,repeticao=True): #2
-    while repeticao:
-        if escolha == 0:
-            repeticao = False
-        elif escolha == 1:
-            for robo in lista_dos_robos:
-                print(robo)
-        elif escolha == 2:
-            robo_counter = 0
-            for robo in lista_dos_robos:
-                print(f"{robo} em {localizacao_dos_robos[robo_counter]}")
-                robo_counter += 1
-        else:
-            print("Introduza uma ação valida!\n")
+def listar_robos(escolha,acao,repeticao=True): 
+    while repeticao: #entra em loop se o argumento/(variavel local) for "True" 
+        if escolha == 0: #Verifica se o argumento "escolha" é 0
+            repeticao = False #mete a variavel repeticao como falso, parando o loop
+        elif escolha == 1: #verifica se o argumento "escolha" é 1
+            for robo in lista_dos_robos: #loop que imprime ao utilizador a informação dos robôs
+                print(robo) #imprime a informação do robô
+        elif escolha == 2: #verifica se o argumento "escolha" é 2
+            robo_counter = 0 #criação de uma variavel local, para fazer a contagem dos robôs
+            for robo in lista_dos_robos: #loop que imprime ao utilizador a informação dos robôs
+                print(f"{robo} em {localizacao_dos_robos[robo_counter]}") #imprime a informação do robôs + localização
+                robo_counter += 1 #incrementa 1 ao contador
+        else: #verifica apenas se nenhuma das verificações assima não der
+            print("Introduza uma ação valida!\n") #imprime informação
         
-        if repeticao:
-            escolha = is_valid_number(menu(acao))
+        if repeticao: #verifica se o argumento "repeticao" é "True"
+            escolha = is_valid_number(menu(acao)) #ulustra o menu e pede ao utilizador uma ação
 
 #menu da consulta dos robôs
  #• Pesquisar o robô pelo identificador.
  #• Informar o utilizador caso o robô não exista.
 def consultar_robo(escolha,acao,impressao=True,repeticao=True): #3
-    while repeticao:
-        if escolha == 1:
+    while repeticao: #entra em loop se o argumento/(variavel local) for "True" 
+        if escolha == 1: #Verifica se o argumento "escolha" é 0
             robo_consultar = menu(no_menu=True) 
             if robo_consultar in lista_dos_robos:
                 if impressao:
