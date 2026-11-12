@@ -20,9 +20,12 @@ acoes = [["Sair", #menu inicial
          "Apresentar informação reduzida",
          "Apresentar toda a informação",],
          
-         ["Sair"], #menu da consulta dos robôs
+         ["Sair",
+          "introduza o ID do robô pretende consultar [ex:R001]"], #menu da consulta dos robôs
 
-         ["Sair"], #Listar localizacoes
+         ["Sair",
+          "Listar todos os robôs",
+          "Listar robô particular",], #Listar localizacoes
 
          ["Sair"], #Criar tarefa
 
@@ -59,6 +62,23 @@ lista_dos_robos = {"R001":["LIMO","100"],
                    "R0014":["Pioneer","100"],
                    "R0015":["Pioneer","100"],}
 
+localizacao_dos_robos = ["Lisboa",
+                         "Porto",
+                         "Sintra",
+                         "Lisboa",
+                         "Faro",
+                         "Lisboa",
+                         "Faro",
+                         "Porto",
+                         "Lisboa",
+                         "Lisboa",
+                         "Lisboa",
+                         "Lisboa",
+                         "Faro",
+                         "Lisboa",
+                         "Faro",
+                         "Porto",]
+
 
 
 def is_valid_number(string,array,return_int=False):
@@ -75,31 +95,65 @@ def is_valid_number(string,array,return_int=False):
         return(False)
 
 
-def menu(numero_do_menu=0,input_on=True):
-    if numero_do_menu == 0:
-        print(f"=============== ROBOFLEET ===============")
-    else:
-        print(f"=============== {acoes[0][numero_do_menu]} ===============")
-    for acao in range(len(acoes[numero_do_menu])):
-        print(f"{acao}. {acoes[numero_do_menu][acao]}")
+def menu(numero_do_menu=0,input_on=True,no_menu=False):
+    if not no_menu:
+        if numero_do_menu == 0:
+            print(f"=============== ROBOFLEET ===============")
+        else:
+            print(f"=============== {acoes[0][numero_do_menu]} ===============")
+        for acao in range(len(acoes[numero_do_menu])):
+            print(f"{acao}. {acoes[numero_do_menu][acao]}")
     if input_on:
         resposta = input("Escolha uma opcao:\n")
         return(resposta)
 
 
-def carregar_datasets():
+###### Pertencem á Lista de funções
+
+def carregar_datasets(): #1
     None
 
-def listar_robos(escolha):
-    for robo in lista_dos_robos:
-        print(robo)
+def listar_robos(escolha,acao,repeticao=True): #2
+    while repeticao:
+        if escolha == 0:
+            repeticao = False
+        if escolha == 1:
+            for robo in lista_dos_robos:
+                print(robo)
+        elif escolha == 2:
+            robo_counter = 0
+            for robo in lista_dos_robos:
+                print(f"{robo} em {localizacao_dos_robos[robo_counter]}")
+                robo_counter += 1
+        else:
+            print("Introduza uma ação valida!\n")
+        
+        if repeticao:
+            escolha = int(menu(acao))
+    
 
 
-def consultar_robo(escolha):
-    None
 
-def listar_localizacoes():
-    None
+
+def consultar_robo(escolha,impressao=True): #3
+    if escolha == 1:
+        robo_consultar = menu(no_menu=True) 
+        if robo_consultar in lista_dos_robos:
+            if impressao:
+                print(f"{robo_consultar}, existe!")
+            return(True)
+        else:
+            if impressao:
+                print(f"{robo_consultar}, não existe!")
+            return(False)
+
+def listar_localizacoes(escolha): #4
+    if escolha == 1:
+        for robo in range(lista_dos_robos):
+            print(f"{lista_dos_robos[robo]} está em {localizacao_dos_robos[robo]}")
+    if escolha == 2:
+        robo_escolha = menu(no_menu=True)
+        consultar_robo(robo_escolha)
 
 def criar_tarefa():
     None
@@ -144,10 +198,10 @@ lista_funções = [carregar_datasets,
 
 
 while running:
-    acao = menu(input_on=True)
-    if is_valid_number(acao, acoes[0]):
-        if acao == "0":
-            running = False
-        else:
-            acao = menu(int(acao),input_on=True)
+    acao = is_valid_number(menu(input_on=True, acoes[0],return_int=True))
+    if acao == 0:
+        running = False
+    else:
+        #print(lista_funções[int(acao)])
+        lista_funções[int(acao)-1](int(menu(int(acao))),int(acao))
         
